@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {Button, Dialog,DialogTitle,TextField} from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import { API_URL } from "../utils";
+import axios from 'axios';
 
 export const UpdateTaskForm = ({fetchTasks,isDialogOpen,setIsDialogOpen, task}) =>{
     const {id,completed} = task;
@@ -29,7 +30,7 @@ export const UpdateTaskForm = ({fetchTasks,isDialogOpen,setIsDialogOpen, task}) 
             <div className="dialog">
                 <TextField size="small" label="Task" variant="outlined" onChange={(e) => setTaskName(e.target.value)}/>
                 <Button variant="contained" onClick={async () =>{
-                    handleUpdateTaskName();
+                    await handleUpdateTaskName();
                     setIsDialogOpen(false);
                 }}>
                     <CheckIcon/>
