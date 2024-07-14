@@ -6,7 +6,7 @@ import axios from 'axios';
 
 export const UpdateTaskForm = ({fetchTasks,isDialogOpen,setIsDialogOpen, task}) =>{
     const {id,completed} = task;
-    const {taskName, setTaskName} = useState("");
+    const [taskName, setTaskName] = useState("");
 
     const handleUpdateTaskName = async () => {
         try{
@@ -28,7 +28,7 @@ export const UpdateTaskForm = ({fetchTasks,isDialogOpen,setIsDialogOpen, task}) 
         <Dialog open={isDialogOpen}>
             <DialogTitle>Edit Task</DialogTitle>
             <div className="dialog">
-                <TextField size="small" label="Task" variant="outlined" onChange={(e) => setTaskName(e.target.value)}/>
+                <TextField size="small" label="Task" variant="outlined" value={taskName} onChange={(e) => setTaskName(e.target.value)}/>
                 <Button variant="contained" onClick={async () =>{
                     await handleUpdateTaskName();
                     setIsDialogOpen(false);
